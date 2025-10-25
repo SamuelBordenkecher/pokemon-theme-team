@@ -1,23 +1,14 @@
 console.log("Connected")
 
+let container = document.getElementById('poke-container')
 const genbutton = document.getElementById("generator");
 let pokeList = []
 genbutton.addEventListener("click", (event) => {
-    // let container = document.getElementById('poke-container') 
-    // container = []
     pokeList = []
+    container.innerHTML = ""
     genRandInt();
 })
 
-// function getLength(){
-//     console.log("Random INt")
-//     fetch(`https://pokeapi.co/api/v2/pokemon?limit=-1`) 
-//     .then ((resp) => resp.json())
-//     .then ((pokeData) => {
-//        let length = pokeData.results.length
-//     })
-//     genRandInt(length);
-// }
 function genRandInt() {
     let number = Math.floor(Math.random() * 1025);
     console.log(number)
@@ -92,7 +83,6 @@ function createPokeCard(pokeData) {
     div.appendChild(img)
 
   // attach the div to my DOM
-    let container = document.getElementById('poke-container')
     container.appendChild(div)
 }
 

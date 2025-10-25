@@ -12,7 +12,7 @@ genbutton.addEventListener("click", (event) => {
 
 function resetTeam() {
     pokeNames = []
-    div = document.getElementById("empty-div")
+    container.innerHTML = ""
 
     // reset container
 }
