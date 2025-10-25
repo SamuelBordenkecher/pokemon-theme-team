@@ -1,14 +1,14 @@
 console.log("Connected")
 
 const genbutton = document.getElementById("generator");
-const pokeList = []
+let pokeList = []
 genbutton.addEventListener("click", (event) => {
     genRandInt();
 })
 
 function genRandInt(){
     console.log("Random INt")
-    let answer = Math.floor(Math.random() * 100);
+    let answer = Math.floor(Math.random() * 100) + 1;
     console.log(answer)
     getRandomPoke(answer);
 }
@@ -61,6 +61,7 @@ function createPokeTeam(pokeList) {
 function createPokeCard(pokeData) {
     console.log("Creating CARD")
     const name = pokeData.name
+    console.log(name)
     const spriteURL = pokeData.sprites.front_default;
 
   // create the elements we need for our card
@@ -69,6 +70,7 @@ function createPokeCard(pokeData) {
     let h5 = document.createElement("h5")
 
   // add the data to the card
+    h5.className = "uppercase"
     h5.innerText = name;
     img.src = spriteURL;
     div.className = 'pokemon-card'

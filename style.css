@@ -3,3 +3,7 @@
     color:blue
 
 }
+
+.uppercase {
+    text-transform: capitalize;
+}
