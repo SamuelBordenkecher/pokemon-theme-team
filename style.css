@@ -7,3 +7,14 @@
 .uppercase {
     text-transform: capitalize;
 }
+.pokemon-card {
+    size: 500px;
+    border: solid blue 3px;
+    padding: 10px;
+}
+
+#poke-container {
+    margin-top: 5vh;
+    display: flex;
+    size: 75vh;
+}

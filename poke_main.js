@@ -6,16 +6,23 @@ genbutton.addEventListener("click", (event) => {
     genRandInt();
 })
 
-function genRandInt(){
-    console.log("Random INt")
-    let answer = Math.floor(Math.random() * 100) + 1;
-    console.log(answer)
-    getRandomPoke(answer);
+// async function getLength(){
+//     console.log("Random INt")
+//     await fetch(`https://pokeapi.co/api/v2/pokemon?limit=-1`) 
+//     .then ((resp) => resp.json())
+//     .then ((pokeData) => {
+//         length = pokeData.results.length})
+//     genRandInt(length);
+function genRandInt(length) {
+    let number = Math.floor(Math.random() * 1025);
+    console.log(number)
+    getRandomPoke(number);
 }
 
-function getRandomPoke(number) {
+
+async function getRandomPoke(number) {
     console.log('GETRANDOMPOKE')
-    fetch(`https://pokeapi.co/api/v2/pokemon/${number}/`) 
+    await fetch(`https://pokeapi.co/api/v2/pokemon/${number}/`) 
     .then((resp) => resp.json())
     .then ((pokeData) => {
         console.log("GEttingPokeData")
@@ -27,9 +34,9 @@ function getRandomPoke(number) {
 
     })
 }
-function getPokeByType(pokeType) {
+async function getPokeByType(pokeType) {
     console.log("GET Poke By Type")
-    fetch(`https://pokeapi.co/api/v2/type/${pokeType}/`)
+    await fetch(`https://pokeapi.co/api/v2/type/${pokeType}/`)
     .then((resp) => resp.json())
     .then((pokeData) => {
         let i = 0
@@ -43,10 +50,10 @@ function getPokeByType(pokeType) {
     createPokeTeam(pokeList)
     })
 }
-function createPokeTeam(pokeList) {
+async function createPokeTeam(pokeList) {
     console.log('CREATING Poke Team')
     for (const pokemon of pokeList) {
-        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+        await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
         .then((resp) => resp.json())
         .then((pokeData) => {
             const name = pokeData.name;
@@ -74,7 +81,6 @@ function createPokeCard(pokeData) {
     h5.innerText = name;
     img.src = spriteURL;
     div.className = 'pokemon-card'
-    div.style.border = "solid blue 3px"
 
   // add the h5 and img to the div
       div.appendChild(h5)
@@ -136,3 +142,13 @@ function createPokeCard(pokeData) {
 //     fetch (`https://pokeapi.co/api/v2/pokemon/clefairy/`)
 // }
 
+
+
+
+// async function getLength(){
+//     console.log("Random INt")
+//     await fetch(`https://pokeapi.co/api/v2/pokemon?limit=-1`) 
+//     .then ((resp) => resp.json())
+//     .then ((pokeData) => {
+//         length = pokeData.results.length})
+//     genRandInt(length);
