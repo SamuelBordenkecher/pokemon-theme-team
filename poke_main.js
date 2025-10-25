@@ -3,26 +3,31 @@ console.log("Connected")
 const genbutton = document.getElementById("generator");
 let pokeList = []
 genbutton.addEventListener("click", (event) => {
+    // let container = document.getElementById('poke-container') 
+    // container = []
+    pokeList = []
     genRandInt();
 })
 
-// async function getLength(){
+// function getLength(){
 //     console.log("Random INt")
-//     await fetch(`https://pokeapi.co/api/v2/pokemon?limit=-1`) 
+//     fetch(`https://pokeapi.co/api/v2/pokemon?limit=-1`) 
 //     .then ((resp) => resp.json())
 //     .then ((pokeData) => {
-//         length = pokeData.results.length})
+//        let length = pokeData.results.length
+//     })
 //     genRandInt(length);
-function genRandInt(length) {
+// }
+function genRandInt() {
     let number = Math.floor(Math.random() * 1025);
     console.log(number)
     getRandomPoke(number);
 }
 
 
-async function getRandomPoke(number) {
+function getRandomPoke(number) {
     console.log('GETRANDOMPOKE')
-    await fetch(`https://pokeapi.co/api/v2/pokemon/${number}/`) 
+    fetch(`https://pokeapi.co/api/v2/pokemon/${number}/`) 
     .then((resp) => resp.json())
     .then ((pokeData) => {
         console.log("GEttingPokeData")
@@ -34,9 +39,9 @@ async function getRandomPoke(number) {
 
     })
 }
-async function getPokeByType(pokeType) {
+function getPokeByType(pokeType) {
     console.log("GET Poke By Type")
-    await fetch(`https://pokeapi.co/api/v2/type/${pokeType}/`)
+    fetch(`https://pokeapi.co/api/v2/type/${pokeType}/`)
     .then((resp) => resp.json())
     .then((pokeData) => {
         let i = 0
@@ -50,10 +55,10 @@ async function getPokeByType(pokeType) {
     createPokeTeam(pokeList)
     })
 }
-async function createPokeTeam(pokeList) {
+function createPokeTeam(pokeList) {
     console.log('CREATING Poke Team')
     for (const pokemon of pokeList) {
-        await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
         .then((resp) => resp.json())
         .then((pokeData) => {
             const name = pokeData.name;
@@ -83,11 +88,11 @@ function createPokeCard(pokeData) {
     div.className = 'pokemon-card'
 
   // add the h5 and img to the div
-      div.appendChild(h5)
-      div.appendChild(img)
+    div.appendChild(h5)
+    div.appendChild(img)
 
   // attach the div to my DOM
-    const container = document.getElementById('poke-container')
+    let container = document.getElementById('poke-container')
     container.appendChild(div)
 }
 
